@@ -1,32 +1,38 @@
 # 🔴 EmbeddedGRE: AI-Powered Semantic Vocabulary Clustering
 
-EmbeddedGRE is a Machine Learning pipeline that modernizes GRE vocabulary studying. Instead of relying on traditional, alphabetical A-Z lists, this project uses advanced Sentence Transformers to group 3,000 GRE words into mathematical, meaning-based clusters.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/oOOo-YKS/EmbededGRE/blob/main/notebooks/main.ipynb)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 💡 The Problem with A-Z Lists
+**EmbeddedGRE** is a Machine Learning pipeline that modernizes GRE vocabulary studying. Instead of relying on traditional, alphabetical A-Z lists, this project uses advanced Sentence Transformers to group 3,000 GRE words into mathematical, meaning-based clusters.
+
+![EmbeddedGRE Semantic Map](image/README/1777846868453.png)
+*A 2D UMAP projection of the 3,000-word GRE vocabulary space. Each color represents a distinct semantic function.*
+
+---
+
+## 💡 The Problem with Traditional Lists
 Traditional GRE study guides group words like *abase* and *abash* together simply because they start with the letter "A". This ignores how the human brain actually learns language: through contextual and functional relationships.
 
 ## 🛠️ The AI Solution: "The Blindfold Technique"
-This project utilizes **BAAI/bge-large-en-v1.5**, a state-of-the-art embedding model, to map the English definitions of 3,000 words into a high-dimensional vector space. 
-By "blindfolding" the AI to the spelling of the word and only feeding it the definition, we eliminate prefix bias and achieve pure semantic clustering. 
+To achieve pure semantic clustering, this project utilizes **BAAI/bge-large-en-v1.5**, a state-of-the-art embedding model. 
 
-### Technology Stack:
+By "blindfolding" the AI to the spelling of the word and only feeding it the English definition, we eliminate prefix bias. The AI reads the *meaning* and maps the words into a high-dimensional vector space.
+
+### Technology Stack
 * **Embeddings:** `SentenceTransformers` (BGE-Large)
 * **Dimensionality Reduction:** `UMAP` (to compress the 384-dimensional space)
 * **Clustering:** `HDBSCAN` (to automatically discover the natural number of semantic categories)
 
-## 📊 Sample Output
-The AI successfully discovered highly specific functional categories, such as:
-* **Category 0 (Exoneration/Freeing):** *absolve, exculpate, exempt, exonerate, extricate*
-* **Category 7 (Extreme Praise):** *adulate, encomium, eulogize, exalt, extol, laudatory*
-* **Category 15 (Clever/Noticeable):** *astute, conspicuous, equivocate, ingenious, knack, palpable, shrewd*
+---
 
-## 🚀 How to Use
+## 📂 Project Structure
 
-**1. Download the Final List**
-If you just want to study the words, download the final clustered CSV here: [Final_EmbeddedGRE_List.csv](link_to_your_csv_file) (Perfect for importing into Notion or Anki).
-
-**2. Run the Code Yourself**
-Click the badge below to open the Python pipeline in Google Colab and tweak the clustering parameters yourself!
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](link_to_your_colab_notebook)
-
-![1777846868453](image/README/1777846868453.png)
+```text
+EmbeddedGRE/
+├── data/
+│   ├── L-GRE-再要你命3000.csv       # Raw, original A-Z vocabulary list
+│   └── Final_EmbeddedGRE_List.csv   # Processed list, sorted by AI clusters
+├── notebooks/
+│   └── EmbeddedGRE_Main.ipynb       # The complete Data Science pipeline
+└── README.md
